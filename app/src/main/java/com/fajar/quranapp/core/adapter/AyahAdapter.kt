@@ -16,37 +16,18 @@ import java.util.ArrayList
 
 class AyahAdapter : RecyclerView.Adapter<AyahAdapter.ListViewHolder>() {
 
-    private var listSurah= ArrayList<Quran>()
+    private var listSurah = ArrayList<Quran>()
     var onItemClick: ((Quran) -> Unit)? = null
 
-    fun setData(newListData: List<Quran>?) {
-        if (newListData == null) return
-        listSurah.clear()
-        listSurah.addAll(newListData)
-        notifyDataSetChanged()
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        ListViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.surah_item, parent, false))
-
-    override fun getItemCount() = listSurah.size
-
-    override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        val data = listSurah[position]
-        holder.bind(data)
-    }
 
     inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val binding = SurahItemBinding.bind(itemView)
         fun bind(data: Quran) {
             with(binding) {
-
                 tvSurahEN.text = data.englishName
                 tvRevelation.text = data.revelationType
                 tvAyah.text = data.numberOfAyahs.toString()
                 tvNameArab.text = data.name
-
-
             }
         }
 
@@ -55,5 +36,23 @@ class AyahAdapter : RecyclerView.Adapter<AyahAdapter.ListViewHolder>() {
                 onItemClick?.invoke(listSurah[adapterPosition])
             }
         }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
+        ListViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.surah_item, parent, false))
+
+    override fun getItemCount(): Int = if (listSurah.size <= 10) listSurah.size else 10
+
+    override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
+        val movie = listSurah[position]
+        holder.bind(movie)
+    }
+
+    fun setData(newMovieList: List<Quran>){
+        val diffUtil = SurahDiffUtil(listSurah,newMovieList)
+        val diffResults = DiffUtil.calculateDiff(diffUtil)
+        this.listSurah.clear()
+        this.listSurah.addAll(newMovieList)
+        diffResults.dispatchUpdatesTo(this)
     }
 }

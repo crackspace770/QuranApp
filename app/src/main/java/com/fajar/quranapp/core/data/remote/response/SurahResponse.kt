@@ -17,7 +17,7 @@ data class ListSurahResponse(
 data class SurahResponse(
 
 	@field:SerializedName("number")
-	val number: Int,
+	val number: String,
 
 	@field:SerializedName("englishName")
 	val englishName: String,

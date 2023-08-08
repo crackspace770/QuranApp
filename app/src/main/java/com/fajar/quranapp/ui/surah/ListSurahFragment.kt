@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.fajar.quranapp.R
 import com.fajar.quranapp.core.adapter.AyahAdapter
 import com.fajar.quranapp.core.data.Resource
 import com.fajar.quranapp.core.ui.ViewModelFactory
@@ -24,7 +23,7 @@ class ListSurahFragment: Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentListSurahBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -69,6 +68,11 @@ class ListSurahFragment: Fragment() {
                 adapter = ayahAdapter
             }
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }

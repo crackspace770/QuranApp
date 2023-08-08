@@ -6,20 +6,20 @@ import com.fajar.quranapp.core.domain.model.Quran
 
 object DataMapper {
     fun mapResponsesToEntities(input: List<SurahResponse>): List<QuranEntity> {
-        val tourismList = ArrayList<QuranEntity>()
+        val surahList = ArrayList<QuranEntity>()
         input.map {
-            val tourism = QuranEntity(
+            val surah = QuranEntity(
                 number = it.number,
                 englishName = it.englishName,
                 numberOfAyahs = it.numberOfAyahs,
                 revelationType = it.revelationType,
                 name = it.name,
                 englishNameTranslation = it.englishNameTranslation,
-                isBookmarked = false
+               // isBookmarked = false
             )
-            tourismList.add(tourism)
+            surahList.add(surah)
         }
-        return tourismList
+        return surahList
     }
 
     fun mapEntitiesToDomain(input: List<QuranEntity>): List<Quran> =
@@ -31,7 +31,7 @@ object DataMapper {
                 revelationType = it.revelationType,
                 name = it.name,
                 englishNameTranslation = it.englishNameTranslation,
-                isBookmarked = false
+              //  isBookmarked = false
             )
         }
     fun mapDomainToEntity(input: Quran) = QuranEntity(
@@ -41,6 +41,6 @@ object DataMapper {
         revelationType = input.revelationType,
         name = input.name,
         englishNameTranslation = input.englishNameTranslation,
-        isBookmarked = false
+       // isBookmarked = false
     )
 }

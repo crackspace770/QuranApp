@@ -10,7 +10,6 @@ import com.fajar.quranapp.core.domain.repository.IQuranRepository
 import com.fajar.quranapp.core.domain.usecase.QuranInteractor
 import com.fajar.quranapp.core.domain.usecase.QuranUseCase
 import com.fajar.quranapp.core.util.AppExecutors
-import com.fajar.quranapp.core.util.JsonHelper
 
 object Injection {
     fun provideRepository(context: Context): IQuranRepository {

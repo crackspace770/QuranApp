@@ -21,7 +21,7 @@ class RemoteDataSource private constructor(private val apiService: ApiService) {
             }
     }
 
-    suspend fun getAllQuran(): Flow<ApiResponse<List<SurahResponse>>> {
+    suspend fun getAllSurah(): Flow<ApiResponse<List<SurahResponse>>> {
         //get data from remote api
         return flow {
             try {

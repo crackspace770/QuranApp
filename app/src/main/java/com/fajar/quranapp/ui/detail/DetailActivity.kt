@@ -18,6 +18,7 @@ class DetailActivity:AppCompatActivity() {
         setContentView(binding.root)
 
 
+
     }
 
     companion object{

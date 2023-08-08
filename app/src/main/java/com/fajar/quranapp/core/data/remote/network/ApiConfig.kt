@@ -18,7 +18,7 @@ object ApiConfig {
 
     fun provideApiService(): ApiService {
         val retrofit = Retrofit.Builder()
-            .baseUrl(" https://api.alquran.cloud/v1/")
+            .baseUrl("https://api.alquran.cloud/v1/")
             .addConverterFactory(GsonConverterFactory.create())
             .client(provideOkHttpClient())
             .build()

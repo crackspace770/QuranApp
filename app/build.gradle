@@ -33,6 +33,7 @@ android {
         jvmTarget = '17'
     }
 
+
     buildFeatures {
         viewBinding true
     }
@@ -72,4 +73,6 @@ dependencies {
 
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
+
+    implementation 'com.github.kirich1409:viewbindingpropertydelegate:1.5.3'
 }

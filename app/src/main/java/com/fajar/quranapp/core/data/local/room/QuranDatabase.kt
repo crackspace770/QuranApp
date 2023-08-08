@@ -20,7 +20,7 @@ abstract class QuranDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     QuranDatabase::class.java,
-                    "Tourism.db"
+                    "Quran.db"
                 )
                     .fallbackToDestructiveMigration()
                     .build()

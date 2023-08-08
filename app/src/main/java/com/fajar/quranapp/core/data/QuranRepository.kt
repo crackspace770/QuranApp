@@ -41,14 +41,14 @@ class QuranRepository private constructor(
    override fun getAllSurah(): Flow<Resource<List<Quran>>> =
         object : NetworkBoundResource<List<Quran>, List<SurahResponse>>() {
             override fun loadFromDB(): Flow<List<Quran>> {
-                return localDataSource.getAllQuran().map { DataMapper.mapEntitiesToDomain(it) }
+                return localDataSource.getAllSurah().map { DataMapper.mapEntitiesToDomain(it) }
             }
 
             override fun shouldFetch(data: List<Quran>?): Boolean =
-                data == null || data.isEmpty()
+                data.isNullOrEmpty()
 
             override suspend fun createCall(): Flow<ApiResponse<List<SurahResponse>>> =
-                remoteDataSource.getAllQuran()
+                remoteDataSource.getAllSurah()
 
             override suspend fun saveCallResult(data: List<SurahResponse>) {
                 val surahList = DataMapper.mapResponsesToEntities(data)

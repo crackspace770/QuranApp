@@ -16,14 +16,14 @@ class LocalDataSource private constructor(private val tourismDao: QuranDao) {
             }
     }
 
-    fun getAllQuran(): Flow<List<QuranEntity>> = tourismDao.getAllSurah()
+    fun getAllSurah(): Flow<List<QuranEntity>> = tourismDao.getAllSurah()
 
     fun getFavoriteSurah(): Flow<List<QuranEntity>> = tourismDao.getFavoriteSurah()
 
     suspend fun insertSurah(tourismList: List<QuranEntity>) = tourismDao.insertSurah(tourismList)
 
     fun setFavoriteTourism(tourism: QuranEntity, newState: Boolean) {
-        tourism.isBookmarked = newState
+    //    tourism.isBookmarked = newState
         tourismDao.updateFavoriteSurah(tourism)
     }
 }

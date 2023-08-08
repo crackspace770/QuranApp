@@ -5,11 +5,11 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Quran(
-    val number: Int,
+    val number: String,
     val englishName: String,
     val numberOfAyahs: Int,
     val revelationType: String,
     val name: String,
     val englishNameTranslation: String,
-    var isBookmarked: Boolean = false
+    //var isBookmarked: Boolean = false
 ): Parcelable

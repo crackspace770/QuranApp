@@ -11,7 +11,7 @@ data class QuranEntity(
 
     @PrimaryKey
     @ColumnInfo(name = "number")
-    val number: Int,
+    val number: String,
 
     @ColumnInfo(name = "englishName")
     val englishName: String,
